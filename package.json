@@ -1,9 +1,9 @@
 {
   "devDependencies": {
+    "grunt-run": "^0.8.1",
     "jest": "^23.6.0"
   },
-
   "scripts": {
-      "test" : "jest"
+    "test": "jest"
   }
 }
