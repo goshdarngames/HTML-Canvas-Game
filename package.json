@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "grunt": "^1.0.3",
     "grunt-run": "^0.8.1",
     "jest": "^23.6.0"
   },
