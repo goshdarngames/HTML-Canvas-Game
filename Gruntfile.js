@@ -1,7 +1,8 @@
 module.exports = function ( grunt ) {
 
     grunt.loadNpmTasks ( 'grunt-run' );
-    grunt.loadNpmTasks ( 'grunt-contrib-uglify' );
+    grunt.loadNpmTasks ( 'grunt-contrib-concat' );
+    //grunt.loadNpmTasks ( 'grunt-contrib-uglify' );
 
     grunt.initConfig ({
 
@@ -17,17 +18,12 @@ module.exports = function ( grunt ) {
             }
         },
 
-        uglify : 
+        concat : 
         {
             game_logic :
             {
-                files:
-                [{
-                    expand : true,
-                    cwd : 'game_logic/',
-                    src : '**/*.js',
-                    dest: 'game-logic.min.js'
-                }]
+                src : 'game_logic/**/*.js',
+                dest: 'game_logic.min.js'
             }
         }
                  
