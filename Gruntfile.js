@@ -24,7 +24,7 @@ module.exports = function ( grunt ) {
                 files:
                 [{
                     expand : true,
-                    cwd : 'game-logic/',
+                    cwd : 'game_logic/',
                     src : '**/*.js',
                     dest: 'game-logic.min.js'
                 }]
