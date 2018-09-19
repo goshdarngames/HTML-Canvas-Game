@@ -1,6 +1,7 @@
 module.exports = function ( grunt ) {
 
-    grunt.loadNpmTasks ( 'grunt-run');
+    grunt.loadNpmTasks ( 'grunt-run' );
+    grunt.loadNpmTasks ( 'grunt-contrib-uglify' );
 
     grunt.initConfig ({
 
@@ -14,7 +15,22 @@ module.exports = function ( grunt ) {
                 cmd : 'npm',
                 args : [ 'test', '--silent' ]
             }
+        },
+
+        uglify : 
+        {
+            game_logic :
+            {
+                files:
+                [{
+                    expand : true,
+                    cwd : 'game-logic/',
+                    src : '**/*.js',
+                    dest: 'game-logic.min.js'
+                }]
+            }
         }
+                 
     });
 
     grunt.registerTask( 'default', ['run:npm_test_jest']);
