@@ -2,8 +2,8 @@
 {
 
     babylonProject.canvas = null;
-    var engine = null;
-    var scene = null;
+    babylonProject.engine = null;
+    babylonProject.scene = null;
 
     var createScene = function() 
     {
