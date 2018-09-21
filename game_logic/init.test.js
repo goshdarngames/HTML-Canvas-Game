@@ -1,10 +1,6 @@
 //Tests the initialization of the babylon project
 const main = require ('./init')
 
-/////////////////////////////////////////////////////////////////////////////
-//PROJECT NAMESPACE TESTS
-/////////////////////////////////////////////////////////////////////////////
-
 test ( 'window.babylonProject is defined', () => 
         {
             expect ( window.babylonProject ).toBeDefined ();
@@ -23,4 +19,12 @@ test ( 'window.babylonProject.engine is defined', () =>
 test ( 'window.babylonProject.scene is defined', () => 
         {
             expect ( window.babylonProject.scene ).toBeDefined ();
+        });
+
+
+
+
+test ( 'window.babylonProject.canvas has DOM ID of \'renderCanvas\'.', () =>
+        {
+            expect ( window.babylonProject.canvas.id ).toBe ("renderCanvas")
         });
