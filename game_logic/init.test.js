@@ -1,4 +1,13 @@
 //Tests the initialization of the babylon project
+
+beforeAll ( () =>
+        {
+            document.body.innerHTML = 
+                "<div>" +
+                "   <canvas id=\"renderCanvas\"></canvas>" +
+                "</div>"
+        });
+
 const main = require ('./init')
 
 test ( 'window.babylonProject is defined', () => 
