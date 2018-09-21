@@ -1,4 +1,4 @@
-(function( babylonProject, $, undefined )
+(function( babylonProject,  undefined )
 {
 
     var canvas = null;
@@ -51,7 +51,7 @@
 
         return scene;
     };
-
+/*
     $(document).ready(function() 
     {
         canvas = document.querySelector("#renderCanvas");
@@ -67,5 +67,5 @@
     $(window).on("resize load", function() {
         engine.resize();
     });
-
-} ( window.babylonProject = window.babylonProject || {}, jQuery));
+*/
+} ( window.babylonProject = window.babylonProject || {}));
