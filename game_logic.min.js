@@ -1,7 +1,7 @@
 (function( babylonProject,  undefined )
 {
 
-    var canvas = null;
+    babylonProject.canvas = null;
     var engine = null;
     var scene = null;
 
