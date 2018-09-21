@@ -1,4 +1,13 @@
-//Tests the initialization of the babylon project
+/**
+ * @jest-environment jsdom
+ */
+
+test ( "Use jsdom in this test file.", () =>
+        {
+            const element = document.createElement("div");
+            expect ( element ).not.toBeNull ();
+        });
+
 
 beforeAll ( () =>
         {
