@@ -1,14 +1,14 @@
 (function( babylonProject,  undefined )
 {
 
-    babylonProject.canvas = null;
+    babylonProject.canvas = null; 
     babylonProject.engine = null;
     babylonProject.scene = null;
 
-    var createScene = function() 
+    babylonProject.createScene = function() 
     {
         // Now create a basic Babylon Scene object
-        var scene = new BABYLON.Scene(engine);
+        var scene = new BABYLON.Scene(babylonProject.engine);
 
         // Change the scene background color to dark green.
         scene.clearColor = new BABYLON.Color3(0, 0.3, 0);
@@ -23,7 +23,7 @@
         camera.setTarget(BABYLON.Vector3.Zero());
         
         // This attaches the camera to the canvas
-        camera.attachControl(canvas, false);
+        camera.attachControl(babylonProject.canvas, false);
        
         // This creates a light, aiming 0,1,0 - to the sky.
         var light = new BABYLON.HemisphericLight(
@@ -51,21 +51,5 @@
 
         return scene;
     };
-/*
-    $(document).ready(function() 
-    {
-        canvas = document.querySelector("#renderCanvas");
-        engine = new BABYLON.Engine(canvas, true);
-        scene = createScene();
 
-        // Register a render loop to repeatedly render the scene
-        engine.runRenderLoop(function () {
-            scene.render();
-        });
-    });
-
-    $(window).on("resize load", function() {
-        engine.resize();
-    });
-*/
-} ( window.babylonProject = window.babylonProject || {}));
+} ( window.babylonProject = window.babylonProject || {} ));

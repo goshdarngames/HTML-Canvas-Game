@@ -2,22 +2,7 @@
  * @jest-environment jsdom
  */
 
-test ( "Use jsdom in this test file.", () =>
-        {
-            const element = document.createElement("div");
-            expect ( element ).not.toBeNull ();
-        });
-
-
-beforeAll ( () =>
-        {
-            document.body.innerHTML = 
-                "<div>" +
-                "   <canvas id=\"renderCanvas\"></canvas>" +
-                "</div>"
-        });
-
-const main = require ('./init')
+const init = require ('./init');
 
 test ( 'window.babylonProject is defined', () => 
         {
@@ -39,10 +24,3 @@ test ( 'window.babylonProject.scene is defined', () =>
             expect ( window.babylonProject.scene ).toBeDefined ();
         });
 
-
-
-
-test ( 'window.babylonProject.canvas has DOM ID of \'renderCanvas\'.', () =>
-        {
-            expect ( window.babylonProject.canvas.id ).toBe ("renderCanvas")
-        });
