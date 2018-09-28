@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const init = require ('./init');
+const init = require ('./babylonProjectGlobals');
 
 test ( 'window.babylonProject is defined', () => 
         {

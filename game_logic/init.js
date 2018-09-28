@@ -1,9 +1,6 @@
 (function( babylonProject,  undefined )
 {
 
-    babylonProject.canvas = null; 
-    babylonProject.engine = null;
-    babylonProject.scene = null;
 
     babylonProject.createScene = function() 
     {
