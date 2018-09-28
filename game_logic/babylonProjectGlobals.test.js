@@ -19,4 +19,9 @@ test ( 'window.babylonProject.engine is defined', () =>
             expect ( window.babylonProject.engine ).toBeDefined ();
         });
 
+test ( 'window.babylonProject.BABYLON is defined', () => 
+        {
+            expect ( window.babylonProject.BABYLON ).toBeDefined ();
+        });
+
 

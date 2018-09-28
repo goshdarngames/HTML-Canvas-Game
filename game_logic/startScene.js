@@ -4,6 +4,8 @@
 
     startScene.createScene = function( babylonProject ) 
     {
+        var BABYLON = babylonProject.BABYLON;
+
         // Now create a basic Babylon Scene object
         var scene = new BABYLON.Scene(startScene.engine);
 
@@ -20,7 +22,7 @@
         camera.setTarget(BABYLON.Vector3.Zero());
         
         // This attaches the camera to the canvas
-        camera.attachControl(startScene.canvas, false);
+        camera.attachControl(babylonProject.canvas, false);
        
         // This creates a light, aiming 0,1,0 - to the sky.
         var light = new BABYLON.HemisphericLight(
@@ -49,4 +51,4 @@
         return scene;
     };
 
-} ( window.startScene = window.babylonProject || {} ));
+} ( window.startScene = window.startScene || {} ));
