@@ -14,8 +14,5 @@
     //reference to the Babylon 3D engine
     babylonProject.engine = null;
 
-    //The currently active Babylon scene
-    babylonProject.scene = null;
-
 } ( window.babylonProject = window.babylonProject || {} ));
 

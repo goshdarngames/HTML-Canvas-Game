@@ -2,7 +2,7 @@
 {
 
 
-    babylonProject.createScene = function() 
+    babylonProject.changeScene = function() 
     {
         // Now create a basic Babylon Scene object
         var scene = new BABYLON.Scene(babylonProject.engine);
