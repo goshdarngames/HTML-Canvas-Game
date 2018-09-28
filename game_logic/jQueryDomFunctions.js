@@ -1,8 +1,7 @@
 /****************************************************************************
  * jQueryDomFunctions.js
- *
- * Uses the jQuery document ready function to execute initialization
- * functions that should be called after all DOM elements have been loaded.
+ * 
+ * Functions where the game interacts with the DOM are defined here.
  ***************************************************************************/
 
 (function( babylonProject, $,  undefined )
