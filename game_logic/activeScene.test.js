@@ -7,13 +7,9 @@ test ( 'window.babylonProject.activeScene is defined', () =>
 
 test ( "changeScene calls parameter as a function" , () =>
     {
-        callCount = 0;
-
-        testSceneFunction = function () { callCount = callCount+1;}; 
+        const testSceneFunction = jest.fn (); 
 
         window.babylonProject.changeScene(testSceneFunction);
         
-        //If change scene calls its parameter as a function the value
-        //should increase
-        expect ( callCount ).toBe ( 1 );
+        expect ( testSceneFunction.mock.calls.length ).toBe ( 1 );
     });
