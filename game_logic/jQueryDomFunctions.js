@@ -16,8 +16,7 @@
         babylonProject.engine =
             new BABYLON.Engine(babylonProject.canvas, true);
 
-        babylonProject.changeScene ( 
-                startScene.createScene( babylonProject ));
+        babylonProject.changeScene ( babylonProject.startScene );
 
         // Register a render loop to repeatedly render the scene
         babylonProject.engine.runRenderLoop(function ()

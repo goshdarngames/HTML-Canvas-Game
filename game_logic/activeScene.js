@@ -1,10 +1,14 @@
+/****************************************************************************
+ * activeScene.js
+ ***************************************************************************/
+
 (function( babylonProject,  undefined )
 {
     babylonProject.activeScene = null;
 
-    babylonProject.changeScene = function( scene ) 
+    babylonProject.changeScene = function( sceneCreationFunction ) 
     {
-        babylonProject.activeScene = scene;
+        babylonProject.activeScene = sceneCreationFunction();
     };
 
 } ( window.babylonProject = window.babylonProject || {} ));

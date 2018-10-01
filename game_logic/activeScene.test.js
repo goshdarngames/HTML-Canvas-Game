@@ -5,9 +5,15 @@ test ( 'window.babylonProject.activeScene is defined', () =>
             expect ( window.babylonProject.activeScene ).toBeDefined ();
         });
 
-test ( "changeScene alters window.babylonProject.activeScene" , () =>
+test ( "changeScene calls parameter as a function" , () =>
     {
-        window.babylonProject.changeScene(1);
+        callCount = 0;
 
-        expect ( window.babylonProject.activeScene).toBe ( 1 );
+        testSceneFunction = function () { callCount = callCount+1;}; 
+
+        window.babylonProject.changeScene(testSceneFunction);
+        
+        //If change scene calls its parameter as a function the value
+        //should increase
+        expect ( callCount ).toBe ( 1 );
     });

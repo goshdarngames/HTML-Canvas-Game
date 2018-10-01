@@ -1,13 +1,11 @@
-(function( startScene,  undefined )
+(function( babylonProject ,  undefined )
 {
-
-
-    startScene.createScene = function( babylonProject ) 
+    babylonProject.startScene = function(  ) 
     {
         var BABYLON = babylonProject.BABYLON;
 
         // Now create a basic Babylon Scene object
-        var scene = new BABYLON.Scene(startScene.engine);
+       var scene = new BABYLON.Scene(babylonProject.engine);
 
         // Change the scene background color to dark green.
         scene.clearColor = new BABYLON.Color3(0, 0.3, 0);
@@ -51,4 +49,4 @@
         return scene;
     };
 
-} ( window.startScene = window.startScene || {} ));
+} ( window.babylonProject = window.babylonProject || {} ));
