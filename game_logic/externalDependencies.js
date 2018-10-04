@@ -1,11 +1,11 @@
 /****************************************************************************
- * babylonProjectGlobals.js
+ * externalDependencies.js
  *
- * Data that can be accessed from anywhere within the babylonProject
- * namespace is defined here.
+ * Pointers to external objects such as DOM objects and library objects
+ * are managed within this file.
  *
- * Most of these are pointers to external objects that should be set
- * when the page is loaded.
+ * Mocking the values from this file allows the dependencies to be mocked
+ * during testing.
  ***************************************************************************/
 
 
