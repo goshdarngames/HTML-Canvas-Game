@@ -8,7 +8,7 @@
         var scene = new BABYLON.Scene(babylonProject.engine);
 
 //        // Change the scene background color to dark green.
-//        scene.clearColor = new BABYLON.Color3(0, 0.3, 0);
+        scene.clearColor = new BABYLON.Color3(0, 0.3, 0);
 //
 //        // This creates and positions a free camera
 //        var camera = new BABYLON.FreeCamera(
