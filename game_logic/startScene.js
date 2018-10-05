@@ -16,12 +16,12 @@
                 new BABYLON.Vector3(0, 5, -10),
                 scene);
 
-//        // This targets the camera to scene origin
-//        camera.setTarget(BABYLON.Vector3.Zero());
-//        
-//        // This attaches the camera to the canvas
-//        camera.attachControl(babylonProject.canvas, false);
-//       
+        // This targets the camera to scene origin
+        camera.setTarget(BABYLON.Vector3.Zero());
+        
+        // This attaches the camera to the canvas
+        camera.attachControl(babylonProject.canvas, false);
+       
 //        // This creates a light, aiming 0,1,0 - to the sky.
 //        var light = new BABYLON.HemisphericLight(
 //                "light1",

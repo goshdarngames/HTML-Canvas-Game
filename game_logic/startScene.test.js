@@ -16,9 +16,15 @@ function get_mock_babylon ()
 
     babylon.Color3 = jest.fn ();
 
-    babylon.FreeCamera = jest.fn ();
+    babylon.FreeCamera = jest.fn ( function ()
+            {
+                this.setTarget = jest.fn();
+                this.attachControl = jest.fn();
+            });
 
     babylon.Vector3 = jest.fn ();
+    babylon.Vector3.Zero = jest.fn ();
+
     return babylon;
 }
 
