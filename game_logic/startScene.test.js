@@ -16,13 +16,9 @@ function get_mock_babylon ()
 
     babylon.Color3 = jest.fn ();
 
-/*    babylon.Color3 = function (r,g,b)
-    {
-        this.r = r;
-        this.g = g;
-        this.b = b;
-    }*/ 
+    babylon.FreeCamera = jest.fn ();
 
+    babylon.Vector3 = jest.fn ();
     return babylon;
 }
 
@@ -53,10 +49,4 @@ test ( "window.babylonProject.startScene.clearColor is Color3", () =>
         expect ( babylon.Color3 ).toHaveBeenCalledTimes ( 1 );
         
         expect ( scene.clearColor ).toBeInstanceOf ( babylon.Color3 );
-        /*
-        expect ( scene.clearColor.r ).toBe(0);
-        expect ( scene.clearColor.g ).toBe(0.3);
-        expect ( scene.clearColor.r ).toBe(0);
-        */
-        
     });
