@@ -102,4 +102,16 @@ describe ("window.babylonProject.startScene", () =>
         expect ( babylon.MeshBuilder.CreateSphere )
             .toHaveBeenCalledTimes ( 1 );
     });
+
+    test ( "creates ground", () =>
+    {
+        window.babylonProject.BABYLON = get_mock_babylon();
+    
+        var scene = window.babylonProject.startScene();
+        
+        var babylon = window.babylonProject.BABYLON;
+
+        expect ( babylon.MeshBuilder.CreateGround )
+            .toHaveBeenCalledTimes ( 1 );
+    });
 });
