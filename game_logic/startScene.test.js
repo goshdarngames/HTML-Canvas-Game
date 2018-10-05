@@ -16,7 +16,8 @@ function get_mock_babylon ()
 
     babylon.Color3 = jest.fn ();
 
-    babylon.FreeCamera = jest.fn ( function ()
+    babylon.FreeCamera = jest.fn ( 
+            function ()
             {
                 this.setTarget = jest.fn();
                 this.attachControl = jest.fn();
@@ -26,6 +27,14 @@ function get_mock_babylon ()
     babylon.Vector3.Zero = jest.fn ();
 
     babylon.HemisphericLight = jest.fn ();
+
+    babylon.MeshBuilder = jest.fn();
+    babylon.MeshBuilder.CreateSphere = jest.fn(
+            function()
+            {
+                return { position : { x : 0, y : 0, z : 0} };
+            });
+    babylon.MeshBuilder.CreateGround = jest.fn(); 
 
     return babylon;
 }
@@ -80,5 +89,17 @@ describe ("window.babylonProject.startScene", () =>
         var babylon = window.babylonProject.BABYLON;
 
         expect ( babylon.HemisphericLight ).toHaveBeenCalledTimes ( 1 );
+    });
+
+    test ( "creates sphere", () =>
+    {
+        window.babylonProject.BABYLON = get_mock_babylon();
+    
+        var scene = window.babylonProject.startScene();
+        
+        var babylon = window.babylonProject.BABYLON;
+
+        expect ( babylon.MeshBuilder.CreateSphere )
+            .toHaveBeenCalledTimes ( 1 );
     });
 });
