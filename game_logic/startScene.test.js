@@ -25,6 +25,8 @@ function get_mock_babylon ()
     babylon.Vector3 = jest.fn ();
     babylon.Vector3.Zero = jest.fn ();
 
+    babylon.HemisphericLight = jest.fn ();
+
     return babylon;
 }
 
@@ -69,5 +71,14 @@ describe ("window.babylonProject.startScene", () =>
         expect ( babylon.FreeCamera ).toHaveBeenCalledTimes ( 1 );
     });
 
+    test ( "creates a hemispheric light", () =>
+    {
+        window.babylonProject.BABYLON = get_mock_babylon();
+    
+        var scene = window.babylonProject.startScene();
+        
+        var babylon = window.babylonProject.BABYLON;
 
+        expect ( babylon.HemisphericLight ).toHaveBeenCalledTimes ( 1 );
+    });
 });
