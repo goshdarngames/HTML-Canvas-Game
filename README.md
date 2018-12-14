@@ -1,4 +1,5 @@
-# HTML Canvas Game
+HTML Canvas Game
+================
 
 This project provides a template that can be cloned when creating a new
 game targeting the HTML canvas.
@@ -13,4 +14,19 @@ Tests are provided using the Jest testing framework.
 
 The Jest packages were installed using the Yarn dependency manager.
 
-To execute tests run 'yarn test' in the root directory.
+To run the tests and build the game use 'grunt' with the provided 
+Gruntfile.js
+
+Game Logic
+==========
+
+The javascript logic for the game can be found in:
+
+    ./game_logic
+
+After running the tests the grunt file concatenates all of the 
+game logic code into:
+
+    ./game_logic.min.js
+
+Minification is not currently implemented.
