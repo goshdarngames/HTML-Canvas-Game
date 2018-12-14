@@ -4,6 +4,11 @@ const startState = require ( "./startState" );
  * MOCK DATA
  ***************************************************************************/
 
+let MockEngine = jest.fn (
+    function ()
+    {
+    });
+
 let MockScene = jest.fn (
     function ()
     {
@@ -34,6 +39,15 @@ MockBabylon = jest.fn (
 
     });
 
+beforeEach ( () =>
+{
+    window.babylonProject.createVRScene = jest.fn (
+            function ()
+            {
+                return new MockScene ();
+            });
+})
+
 /****************************************************************************
  * TESTS
  ***************************************************************************/
@@ -49,31 +63,59 @@ describe ( "window.babylonProject.startState", () =>
     test ( "instance has an update function", () =>
     {
         let mock_babylon = new MockBabylon ();
-        let mock_scene = new MockScene ();
+        let mock_engine = new MockEngine ();
 
         let startState = 
-            new window.babylonProject
-                .StartState ( mock_babylon, mock_scene );
+            new window.babylonProject.StartState ( 
+                    mock_babylon, mock_engine );
 
         expect ( startState.update ).toBeDefined ();
     });
 
-    test ( "constructing StartState with no args throws error", () =>
+    test ( "error is thrown if engine or babylon is undefined", () =>
     {
+        let mock_babylon = new MockBabylon ();
+        let mock_engine = new MockEngine ();
+
         expect (() =>
                 {
-                    new window.babylonProject.StartState ()
+                    new window.babylonProject.StartState (mock_babylon)
                 })
-            .toThrow ();
+            .toThrow ("Engine is undefined.");
+
+        expect (() =>
+                {
+                    new window.babylonProject.StartState (
+                            undefined, mock_engine )
+                })
+            .toThrow ("Babylon is undefined.");
+    });
+
+    test ( "createVRScene is called during constructor "+
+           "with babylon and engine as paramters", () =>
+    {
+       let mock_babylon = new MockBabylon ();
+       let mock_engine = new MockEngine ();
+
+       let startState = 
+            new window.babylonProject.StartState ( 
+                    mock_babylon, mock_engine );
+
+       expect ( window.babylonProject.createVRScene )
+           .toHaveBeenCalledTimes ( 1 );
+
+       expect ( window.babylonProject.createVRScene )
+           .toHaveBeenCalledWith ( mock_babylon, mock_engine );
     });
 
     test ( "instance.update() returns instance of StartState", () =>
     {
-        let mock_scene = new MockScene ();
         let mock_babylon = new MockBabylon ();
+        let mock_engine = new MockEngine ();
 
         let startState = 
-            new window.babylonProject.StartState (mock_babylon, mock_scene );
+            new window.babylonProject.StartState ( 
+                    mock_babylon, mock_engine );
 
         expect ( startState.update () )
             .toBeInstanceOf (

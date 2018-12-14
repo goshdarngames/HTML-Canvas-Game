@@ -29,8 +29,6 @@ beforeEach ( ()=>
 {
     window.babylonProject.StartState = jest.fn ();
 
-    window.babylonProject.createVRScene = jest.fn ();
-
     window.babylonProject.gameLoop = jest.fn ();
 });
  
@@ -134,24 +132,32 @@ describe ( "window.babylonProject.pageLoaded" , () =>
             .toHaveBeenCalledTimes ( 1 );
     });
 
-    test ( "passes return value from babylonProject.createVRScene "+
-           "and babylon lib reference " +
+    test ( "passes babylon and engine reference " +
            "to babylonProject.StartScene constructor", ()=>
     {
         let mock_doc = new MockDoc ();
 
         let mock_babylon = new MockBabylon ();
         
-        //capture reference to compare later
-        createVRSceneReturn = window.babylonProject.createVRScene ();
+        let engineCreationFunc = window.babylonProject.createBabylonEngine;
 
-        window.babylonProject.createVRScene
-            .mockReturnValueOnce ( createVRSceneReturn );
+        //capture reference to compare later
+        engine = window.babylonProject.createBabylonEngine 
+            ( mock_babylon, jest.fn () );
+
+        //replace function with mock
+        window.babylonProject.createBabylonEngine = jest.fn ();
+
+        window.babylonProject.createBabylonEngine
+            .mockReturnValueOnce ( engine );
 
         window.babylonProject.pageLoaded ( mock_doc, mock_babylon );
 
         expect ( window.babylonProject.StartState )
-            .toHaveBeenCalledWith (mock_babylon , createVRSceneReturn );
+            .toHaveBeenCalledWith (mock_babylon , engine );
+
+        //restore old func
+        window.babylonProject.createBabylonEngine = engineCreationFunc;
 
     });
 
@@ -166,58 +172,6 @@ describe ( "window.babylonProject.pageLoaded" , () =>
 
         expect ( window.babylonProject.currentGameState )
             .toBeInstanceOf ( window.babylonProject.StartState );
-    });
-
-    
-
-    test ( "calls createVRScene",  () =>
-    {
-        let mock_doc = new MockDoc ();
-
-        let mock_babylon = new MockBabylon ();
-
-
-        window.babylonProject.pageLoaded ( mock_doc, mock_babylon );
-
-        expect ( window.babylonProject.createVRScene )
-            .toHaveBeenCalledTimes ( 1 );
-    });
-
-    test ( "passes dependencies to createVRScene",  () =>
-    {
-        let mock_doc = new MockDoc ();
-
-        let mock_babylon = new MockBabylon ();
-  
-        //store an engine instance returned by the factory function
-        engineInstance = 
-            window.babylonProject.createBabylonEngine (
-                    mock_babylon, jest.fn() );
-      
-        //store old engine creation method
-        let createBabylonEngineFunc = 
-            window.babylonProject.createBabylonEngine;
-
-        //override the engine creation function 
-        window.babylonProject.createBabylonEngine = 
-            jest.fn ( createBabylonEngineFunc  );
- 
-
-        //mock return value to return the stored instance
-        window.babylonProject.createBabylonEngine.
-            mockReturnValueOnce ( engineInstance );
-
-        window.babylonProject.pageLoaded ( mock_doc, mock_babylon );
-
-        expect ( window.babylonProject.createVRScene )
-            .toHaveBeenCalledTimes ( 1 );
-
-        //check that the engine instance was passed to create VR Scene
-        expect ( window.babylonProject.createVRScene )
-            .toBeCalledWith ( mock_babylon, engineInstance ); 
-
-        //restore the old version of the engine creation function
-        window.babylonProject.createBabylonEngine = createBabylonEngineFunc;
     });
 
 

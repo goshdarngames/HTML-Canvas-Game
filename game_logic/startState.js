@@ -10,7 +10,7 @@
 ( function ( babylonProject, simon_says,  undefined )
 {
     /**
-     * StartState ( babylon, scene )
+     * StartState ( babylon )
      *
      * Constructor function for the first state the game will enter into
      * when the page is loaded.
@@ -18,12 +18,19 @@
      * The update function should return the next state - it should return
      * 'this' if the state is not changing.
      */
-    babylonProject.StartState = function ( babylon, scene )
+    babylonProject.StartState = function ( babylon, engine )
     {
-        if ( scene == undefined )
+        if ( engine == undefined )
         {
-            throw new Error ( "Scene argument is undefined" );
+            throw new Error ( "Engine is undefined.");
         }
+
+        if ( babylon == undefined )
+        {
+            throw new Error ( "Babylon is undefined.");
+        }
+
+        let scene = babylonProject.createVRScene ( babylon, engine);
 
         let box = babylon.MeshBuilder.CreateBox ( "box", {}, scene );
 

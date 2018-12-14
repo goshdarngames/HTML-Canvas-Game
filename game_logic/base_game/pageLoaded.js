@@ -28,11 +28,8 @@
         let engine = babylonProject
             .createBabylonEngine ( babylonRef, canvas );
 
-        let scene =  babylonProject
-            .createVRScene ( babylonRef, engine );
-
         let startState = new window.babylonProject
-            .StartState( babylonRef, scene );
+            .StartState( babylonRef, engine );
 
         babylonProject.currentGameState = startState;
 
