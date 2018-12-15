@@ -7,7 +7,8 @@
  * The StartState object should have an update function that returns the
  * next state.  
  ***************************************************************************/
-( function ( babylonProject, simon_says,  undefined )
+
+( function ( babylonProject, undefined )
 {
     /**
      * StartState ( babylon )
@@ -32,11 +33,6 @@
 
         let scene = babylonProject.createVRScene ( babylon, engine);
 
-        let box = babylon.MeshBuilder.CreateBox ( "box", {}, scene );
-
-        box.position.z = 1;
-        box.position.y = 3;
-
         this.update = function ()
         {
             scene.render ();
@@ -45,5 +41,4 @@
         };
     }; 
 
-} ( window.babylonProject = window.babylonProject || {},
-    window.simonSays = window.simonSays || {}  ));
+} ( window.babylonProject = window.babylonProject || {} ));
